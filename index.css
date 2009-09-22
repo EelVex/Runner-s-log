@@ -1,0 +1,231 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+#options {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#options ul {
+	display: block;
+	float: left;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	background: #740;
+}
+#options ul li {
+	display: inline;
+	text-align: center;
+	background: #740;
+	margin: 0 1px;
+}
+#options ul li a {
+	display: block;
+	float: left;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: #fff;
+	border: solid #740 1px;
+	border-right: solid #fff 2px;
+	padding: 0.2em 1em;
+}
+#options ul li a:hover {
+	background: #962;
+	border: solid black 1px;
+	border-right: solid #fff 2px;
+}
+#options ul li a.current {
+	background: #962;
+	color: yellow;
+	border: solid #740 1px;
+	border-right: solid #fff 2px;
+}
+.table {
+	float: left;
+	margin: 3px;
+}
+.graph {
+	float: left;
+	margin: 3px;
+}
+table {
+	font-family: sans-serif;
+	font-size: 12px;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border: solid black 1px;
+	margin: 0;
+	padding: 0;
+}
+p.plain {
+	font-family: sans-serif;
+	width: 450px;
+}
+p.plain, p.plain img {
+	font-size: 12px;
+	border: none;
+}
+p.plain b {
+	border-bottom: solid black 1px;
+}
+tr {
+	margin: 0;
+	padding: 0;
+}
+th {
+	margin: 0;
+	padding: 0;
+	background-color: #c95;
+	border-right: #973 solid 1px;
+	padding: 1px 3px;
+}
+td {
+	margin: 0;
+	padding: 0;
+	border-top: solid #ccc  1px;
+	border-right: solid #ccc 1px;
+	text-align: right;
+	padding: 0 4px;
+}
+img {
+	padding :0;
+	margin: 0;
+	border: solid black 1px;
+}
+table img {
+	border: 0;
+}
+table.pal-cal {
+	margin: 2px 0;
+}
+table.pal-cal td {
+	color: green;
+	width: 140px;
+}
+table.pal-cal td.pal-month,
+table.pal-cal td.pal-dayname,
+table.pal-cal td b {
+	color: black;
+}
+#content {
+	clear: both;
+	margin: 5px 5px;
+	padding: 5px 0;
+}
+div.period {
+	margin: 10px 5px;
+	padding: 10px 5px;
+	border-top: dotted #ccc 1px;
+}
+div.timeline {
+	font-family: monospace;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+div.timeline div {
+	display: block;
+	float: left;
+	width: 40px;
+	height: 30px;
+	border-top: solid black 1px;
+	border-bottom: solid black 1px;
+	border-left: solid #ccc 1px;
+	margin: 0 0 35px 0;
+	padding: 0;
+}
+
+div.timeline div span {
+	display: block;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	margin-left: 15px;
+	//margin-left: -15px;
+	//margin-top: 15px;
+}
+
+div.timeline div span.week_stats {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	margin-top: -45px;
+	border-right: solid #aaa 1px;
+	width: 40px;
+	color: #aaa;
+}
+
+table.calendar td {
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+	width: 60px;
+	height: 60px;
+}
+
+table.calendar td span {
+	padding: 5px;
+	color: #072;
+	display: block;
+}
+
+table.calendar {
+	border: 0;
+	border-left: solid black 1px;
+}
+
+table.calendar td span.day {
+	position: relative;
+	font-size: 10px;
+	display: block;
+	margin: 0;
+	padding: 0;
+	color: #aaa;
+}
+
+table.calendar th {
+	border-top: solid black 1px;
+}
+
+table.calendar th.extra {
+	border: 0;
+	background: #fff;
+}
+
+table.calendar td {
+	border: solid #ccc 1px;
+	border-top: 0;
+}
+
+table.calendar td.extra {
+	border: 0;
+	vertical-align: middle;
+}
+
+table.calendar td.today span.day {
+	color: #c22;
+	text-align: center;
+}
+table.calendar td.today {
+	border: solid #c22 2px;
+}
+table.calendar td span.misc {
+	color: #55c;
+	font-size: 10px;
+}
+table.calendar td span.wei {
+	color: #f00;
+	font-weight: bold;
+	font-size: 10px;
+}
+table.calendar td span.swim {
+	color: #00f;
+	font-weight: bold;
+	font-size: 10px;
+}
