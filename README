@@ -1,0 +1,19 @@
+Use this application to track your running progress and check your statistics.
+
+Keep a log of your runs in a text file.
+
+Log format:
+(See samples/example.log)
+
+* Columns are TAB separated
+* 5+1 columns:
+  date, time, duration, "laps", flag, [comments]
+* Flags:
+  N: "Normal" run (i.e. not part of a training program)
+  I: Interval training
+  S/M/L: short/normal/long run
+  R: Race
+* First two lines are ignored
+
+Form more information see:
+http://eelvex.net/running
