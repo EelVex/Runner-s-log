@@ -1,4 +1,6 @@
-<?
+<?php
+require_once("configure.inc");
+
 $show = array('sum'=>'',
 	'cal'=>'',
 	'period'=>'',
@@ -8,7 +10,6 @@ $show = array('sum'=>'',
 );
 if (isset($_GET['show']))  	$show[$_GET['show']] = " class='current' ";
 else  			$show['sum'] = " class='current' "; 
-$record_categories = array(3, 5, 7.2, 10, 15, 21.1, 42.2);
 setlocale(LC_TIME,'el_GR.ISO8859-7');
 include_once('functions.php');
 include_once("read.php");

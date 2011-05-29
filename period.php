@@ -1,8 +1,8 @@
-Περίοδοι: <? echo $num_periods; ?>
-<?
+Περίοδοι: <?php echo $num_periods; ?>
+<?php
 $i = 0;
 foreach ($periods as $period) {
-	// Bgale ton teleytaio agwna
+	// Exclude last race if it's the last input
 	$period = array_reverse($period);
 	if ($period[0]['type_of_run'] == 'R') {
 		$last_race = array_shift($period);
@@ -17,6 +17,13 @@ foreach ($periods as $period) {
 	echo "<h3>".stamp_format($period[0]['datetime_stamp']).' εως '.stamp_format($period[sizeof($period)-1]['datetime_stamp'])."</h3>";
 	if (isset($last_race)) {
 		echo "<h4>Στόχος: ".$last_race['comments'].' ('.stamp_format($last_race['datetime_stamp']).") </h4>";
+		printf("<div class='result'><h5>Αποτελεσμα:</h5><span>%01.0f:%02.0f:%02.0fh | %smin/km | %3.1fvo</span></div>",
+			$last_race['time_hours'],
+			$last_race['time_mins'],
+			$last_race['time_secs'],
+			pace_format($last_race['pace']),
+			$last_race['vo']
+		);
 	}
 
 	$total_km = 0; $n = 0; $day = 0;
@@ -36,7 +43,8 @@ foreach ($periods as $period) {
 			$day++;
 		}
 		$prev_day = date("z", $run['datetime_stamp']);
-		echo '<div '.style_type($run['type_of_run']).'>'.$run['type_of_run'].'<br />'.sprintf("%04.1f",$run['distance'])."<span>$n</span>".week_stats($day, $period)."</div>";
+		$the_date = date("d-m-Y",$run['datetime_stamp']);
+		echo '<div '.style_type($run['type_of_run']).'>'.$run['type_of_run'].'<br />'.sprintf("%04.1f",$run['distance'])."<span title='$the_date'>$n</span>".week_stats($day, $period)."</div>";
 	}
 	$mean_pace /= $n;
 	$mean_vo /= $n;
@@ -46,19 +54,6 @@ foreach ($periods as $period) {
 			<b>".sprintf("%1.1f", 7*sizeof($period)/$total_days)." προπονήσεις/βδομάδα</b>
 		</p><p class='plain'>Μεσος ρυθμος: ".pace_format($mean_pace)."  min/km, ".sprintf("%4.2f",$mean_vo)." vo2 </p>";
 
-	/*
-	unset($data_dates, $data);
-	foreach ($period as $run) {
-		$data_dates[] = $run['datetime_stamp'];
-		$data[] = $run['distance'];
-	}
-	$title = 'Χιλιόμετρα';
-	$footer = 'foot';
-	$file = 'img/period'.$i.'.png';
-	include('simple_graph.php');
-	//echo "<div><img src='images.php?graph=pace' /></div>";
-	echo "<div><img src='$file' /></div>";
-	 */
 
 	echo "</div>";
 }

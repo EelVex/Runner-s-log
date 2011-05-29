@@ -2,21 +2,11 @@
 echo "<div class='table'><table><tr><th>Ημ/νια</th><th>Απόσταση<br />(km)</th><th>Χρόνος<br />(h:m:s)</th><th>Μ.Ο<br />(min/km)</th><th>&nbsp;</th><th>VO</th></tr>";
 for ($i=sizeof($runs)-1;$i>=0;$i--) {
 	$style = "";  $img_pc = ''; $img_km = ''; $img_vo = '';
-	/*
-	if (sizeof($runs)-$i < 14) {
-		$img_pc = award_image('pc', $runs[$i]['record_days_pc']); 
-		$img_km = award_image('km', $runs[$i]['record_days_km']);
-		$img_vo = award_image('vo', $runs[$i]['record_days_vo']);
-	}
-	if (sizeof($runs)-$i == 14) {
-		$style = "style='border-bottom: solid black 1px'";
-	}
-	 */
 	$flag = $runs[$i]["type_of_run"];
 	if ($best_pace == $i) { //$style = " style='background: #fcc;' "; 
-				$img_pc = '<img src=\'cup.gif\' />'; }
+				$img_pc = '<img src=\'img/cup.gif\' />'; }
 	if ($best_km == $i) { //$style = " style='background: #cfc;' "; 
-				$img_km = '<img src=\'cup.gif\' />'; }
+				$img_km = '<img src=\'img/cup.gif\' />'; }
 	
 	$flag_style = style_type(substr($flag,0,1));
 	$secs = round(60*($runs[$i]["minutes_per_km"]-intval($runs[$i]["minutes_per_km"])));
@@ -39,12 +29,6 @@ for ($i=sizeof($runs)-1;$i>=0;$i--) {
 		$flag,
 		$runs[$i]['vo']
 	);
-	//echo "<tr>
-		//<td>".strftime("%a %d-%b-%Y",$runs[$i]["datetime_stamp"])."</td>
-		//<td>".$runs[$i]["distance"]."&nbsp;&nbsp;</td>
-		//<td>".$runs[$i]["time_hours"].":".$runs[$i]["time_mins"].":".$runs[$i]["time_secs"]."&nbsp;&nbsp;</td>
-		//<td>".$runs[$i]["minutes_per_km"]."&nbsp;&nbsp;</td>
-		//</tr>";
 }
 echo "</table></div>";
 echo "<div class='table'><table><tr><th>Μήνας</th><th>km</th><th>runs</th><th>km/run</th></tr>";

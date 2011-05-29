@@ -1,6 +1,10 @@
 <?php
 include_once('functions.php');
-$fp = fopen('/home/eelvex/Itnogs/files/running','r');
+
+$lap_distance = $CONFIGURE['lap_distance_m']/1000;
+$running_file = $CONFIGURE['log_file'];
+
+$fp = fopen($running_file,'r');
 $dump = fgets($fp); $dump = fgets($fp); //Ignore first too lines
 $i = 0; $total_run = 0; $tmp_best = 1000; $total_time = 0; $tmp_best_km = 0;
 $sum_vo = 0;
@@ -19,9 +23,9 @@ while (!feof($fp)) {
 		$runs[$i]["type_of_run"] = trim($arr[4]);
 		$runs[$i]["comments"] = trim($arr[5]);
 
-		$runs[$i]["distance"] = $runs[$i]["laps_total"]*.45;
+		$runs[$i]["distance"] = $runs[$i]["laps_total"]*$lap_distance;
 		$runs[$i]["minutes_per_lap"] = $runs[$i]["time_total"]/$runs[$i]["laps_total"];
-		$runs[$i]["minutes_per_km"] = $runs[$i]["time_total"]/$runs[$i]["laps_total"]/.45/60;
+		$runs[$i]["minutes_per_km"] = $runs[$i]["time_total"]/$runs[$i]["laps_total"]/$lap_distance/60;
 		$runs[$i]['pace'] = $runs[$i]['minutes_per_km'];
 
 		list($min,$hour) = explode(":",$runs[$i]["time_run"]);
@@ -84,11 +88,6 @@ $mean_km_14 = sprintf("%4.2f",$mean_km_14/$freq_14);
 $mean_vo_14 = sprintf("%4.2f",$mean_vo_14/$freq_14);
 
 $record_days_km = 0; $record_days_vo = 0; $record_days_pc = 0;
-/*
-for ($i=sizeof($runs)-1;$i>=0;$i--) if ($runs[$i]['distance'] > $runs[sizeof($runs)-1]['distance']) break; else $record_days_km++;
-for ($i=sizeof($runs)-1;$i>=0;$i--) if ($runs[$i]['minutes_per_km'] < $runs[sizeof($runs)-1]['minutes_per_km']) break; else $record_days_pc++;
-for ($i=sizeof($runs)-1;$i>=0;$i--) if ($runs[$i]['vo'] > $runs[sizeof($runs)-1]['vo']) break; else $record_days_vo++;
- */
 
 for ($i=7;$i<sizeof($runs);$i++) {
 	$tmp_km = 0; $tmp_pc = 0; $tmp_vo = 0;
@@ -106,54 +105,52 @@ $record_days_vo = $runs[sizeof($runs)-1]['record_days_vo'];
 
 fclose($fp);
 
-$fp = fopen('/home/eelvex/Itnogs/files/wei','r');
-$dump = fgets($fp); $dump = fgets($fp); //Ignore first too lines
-while (!feof($fp)) {
-	$tmp = fgets($fp);
-	if ($tmp) {
-		$arr = explode("\t", $tmp);
-		$weis[$i]["date_wei"] = $arr[0];
-		list($day,$month,$year) = explode(".",$weis[$i]["date_wei"]);
-		$weis[$i]["datetime_stamp"] = mktime(0,14,0,$month,$day,$year);
-		$wei_stamp[mktime(0,0,0,$month,$day,$year)] = 1;
-		$i++;
-	}
-}
-fclose($fp);
+$extras = $CONFIGURE['extra_activities'];
+$extra_activities = array();
 
-$fp = fopen('/home/eelvex/Itnogs/files/swim','r');
-$dump = fgets($fp); $dump = fgets($fp); //Ignore first too lines
-while (!feof($fp)) {
-	$tmp = fgets($fp);
-	if ($tmp) {
-		$arr = explode("\t", $tmp);
-		$swims[$i]["date_swim"] = $arr[0];
-		$swims[$i]['time'] = $arr[2];
-		list($day,$month,$year) = explode(".",$swims[$i]["date_swim"]);
-		$swims[$i]["datetime_stamp"] = mktime(0,14,0,$month,$day,$year);
-		$swim_stamp[mktime(0,0,0,$month,$day,$year)] = 1;
-		$i++;
-	}
-}
-fclose($fp);
+foreach ($extras as $extra_name => $extra_file) {
+	$fp = fopen($extra_file,'r');
+	$dump = fgets($fp); $dump = fgets($fp); //Ignore first two lines
+	$activity = array();
+	while (!feof($fp)) {
+		$tmp = fgets($fp);
+		if ($tmp) {
+			$arr = explode("\t", $tmp);
 
-$fp = fopen('/home/eelvex/Itnogs/files/misc','r');
-$dump = fgets($fp); $dump = fgets($fp); //Ignore first too lines
-while (!feof($fp)) {
-	$tmp = fgets($fp);
-	if ($tmp) {
-		$arr = explode("\t", $tmp);
-		$arr[] = ""; /* UGLY HACK */ // GIa na eimaste sigouroi oti yparxei to $arr[5]
-		$miscs[$i]['date'] = $arr[0];
-		$miscs[$i]['time'] = $arr[1];
-		$miscs[$i]['what'] = $arr[2];
-		$miscs[$i]['comments'] = trim($arr[3]);
-		list($day,$month,$year) = explode(".",$miscs[$i]['date']);
-		$miscs[$i]["datetime_stamp"] = mktime(0,14,0,$month,$day,$year);
-		$misc_stamp[mktime(0,0,0,$month,$day,$year)] = 1;
-		$i++;
+			$tdate = $arr[0];
+			$duration = '';
+			$what = '';
+			$comments = '';
+			/* Try to guess what's in collumn 1. It "should" be 
+			 * either activity's starting time or activity's
+			 * comments/details */
+			if (time_format($arr[1]) == '00:00:00') {
+				$comments = $arr[1];
+			}
+
+			/* Try to guess what's in collumn 3. It "should" be 
+			 * either an activity duration or an activity 
+			 * description */
+			if (preg_match('/[0-9]*:[0-9]*/', $arr[2])) {
+				$duration = $arr[2];
+			} else {
+				$what = $arr[2];
+				if (!$comments) $comments = $arr[3];
+			}
+
+			list($day,$month,$year) = explode('.',$tdate);
+			$activity[] = array(
+				'date' => $tdate,
+				'duration' => $duration,
+				'what' => $what,
+				'comments' => $comments,
+				'datetime_stamp' => mktime(0,14,0,$month,$day,$year),
+			);
+			$activity_stamp[mktime(0,0,0,$month,$day,$year)] = 1;
+		}
 	}
+	fclose($fp);
+	$extra_activities[$extra_name] = $activity;
 }
-fclose($fp);
 
 ?>

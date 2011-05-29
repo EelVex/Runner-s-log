@@ -1,7 +1,7 @@
 <div class='table'>
 	<table>
 		<tr><th>km</th><th>mi</th><th>Laps 450m</th><th>Laps 400m</th></tr>
-		<?
+		<?php
 			$dist = 1;
 			for ($i=0;$i<20;$i++) {
 				echo "<tr>
@@ -27,7 +27,7 @@
 	<br />
 	<table>
 		<tr><th>mi</th><th>km</th><th>Laps 450m</th><th>Laps 400m</th></tr>
-		<?
+		<?php
 			$dist = 1;
 			for ($i=0;$i<20;$i++) {
 				echo "<tr>
@@ -45,7 +45,7 @@
 <div class='table'>
 	<table>
 		<tr><th>Ρυθμός</th><th>100m</th><th>1l<br />(400m)</th><th>1L<br/>(450m)</th><th>800m</th><th>7L</th><th>5km</th><th>10L</th><th>16L</th><th>10km</th><th>21.1km</th><th>42.2km</th></tr>
-		<?
+		<?php
 			$pace = 2+15/60;
 			$distances = array(.1,.4,.45,.8,7*.45,5,10*.45,16*.45,10,21.1,42.2);
 			for ($i=0;$i<54;$i++) {
@@ -66,20 +66,6 @@
 					echo "<td title='$vo' style='background: $color;'>$ttime</td>";
 				}
 				echo '</tr>';
-				/*
-				echo "<tr>
-					<td><b>".pace_format($pace)."</b></td>
-					<td>".pace_format($pace*.40)."</td>
-					<td>".pace_format($pace*.45)."</td>
-					<td>".pace_format($pace*7*.45)."</td>
-					<td>".pace_format($pace*5)."</td>
-					<td>".pace_format($pace*10*.45)."</td>
-					<td>".pace_format($pace*16*.45)."</td>
-					<td>".time_format($pace*10)."</td>
-					<td>".time_format($pace*21.1)."</td>
-					<td>".time_format($pace*42.2)."</td>
-					</tr>";
-				 */
 				$pace += 5.0/60;
 			}
 ?>

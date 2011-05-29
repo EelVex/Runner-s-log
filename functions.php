@@ -18,9 +18,9 @@ function award_image($type, $days)
 		case "vo": $type = '3'; $type_name = 'VO2'; break;
 	}
 
-	if 	($days > 89) $ret = "<img src='award_star_gold_$type.png' title='$days' alt='gold' /> ($type_name)";
-	elseif 	($days > 29) $ret = "<img src='award_star_silver_$type.png' title='$days' alt='silver' /> ($type_name)";
-	elseif 	($days > 6) $ret = "<img src='award_star_bronze_$type.png' title='$days' alt='bronze' /> ($type_name)";
+	if 	($days > 89) $ret = "<img src='img/award_star_gold_$type.png' title='$days' alt='gold' /> ($type_name)";
+	elseif 	($days > 29) $ret = "<img src='img/award_star_silver_$type.png' title='$days' alt='silver' /> ($type_name)";
+	elseif 	($days > 6) $ret = "<img src='img/award_star_bronze_$type.png' title='$days' alt='bronze' /> ($type_name)";
 
 	return $ret;
 }
@@ -91,7 +91,9 @@ function style_type($type,$back='background-')
 
 function show_month($mon, $year)
 {
-	global $runs, $week, $weis, $swims, $miscs;
+	global $runs, $week, $extra_activities;
+
+	$month = array();
 
 	for ($i=1;$i<40;$i+=7) {
 		$extra_weeks[date('W', mktime(0,0,0, $mon, $i, $year))] = ' 0.0 km';
@@ -112,51 +114,29 @@ function show_month($mon, $year)
 		if (date("n", $stamp) > $mon && date("Y", $stamp) >= $year)
 			break;
 	}
-	foreach ($swims as $swim)
+
+	foreach ($extra_activities as $activity_name => $activity) 
 	{
-		$stamp = $swim['datetime_stamp'];
-		if ((date("n", $stamp) < $mon-1 || date("Y", $stamp) < $year)) 
-			continue;
-		if (date("n", $stamp) == $mon && date("Y", $stamp) == $year) 
-		{	
-			$day = date("j", $stamp);
-			$content = '<span class=\'swim\' title=\''.time_format($swim['time']).'\'>s</span>';
-			if (isset($month[$day][2])) $month[$day][2] .= $content;
-			else $month[$day][2] = $content;
+		foreach ($activity as $instance)
+		{
+			$stamp = $instance['datetime_stamp'];
+			if ((date("n", $stamp) < $mon-1 || date("Y", $stamp) < $year)) 
+				continue;
+			if (date("n", $stamp) == $mon && date("Y", $stamp) == $year) 
+			{	
+				$day = date("j", $stamp);
+				$what = '';
+				if ($instance['what'] != '') $what = ': '.$instance['what'];
+				$content = '<span class=\''.$activity_name.'\' title=\''.($instance['comments']).' '.time_format($instance['duration']).'\'>'.substr($activity_name, 0, 1).$what.'</span>';
+				if (isset($month[$day][2])) $month[$day][2] .= $content;
+				else $month[$day][2] = $content;
+			}
+			if (date("n", $stamp) > $mon && date("Y", $stamp) >= $year)
+				break;
 		}
-		if (date("n", $stamp) > $mon && date("Y", $stamp) >= $year)
-			break;
+
 	}
-	foreach ($weis as $wei)
-	{
-		$stamp = $wei['datetime_stamp'];
-		if ((date("n", $stamp) < $mon-1 || date("Y", $stamp) < $year)) 
-			continue;
-		if (date("n", $stamp) == $mon && date("Y", $stamp) == $year) 
-		{	
-			$day = date("j", $stamp);
-			$content = '<span class=\'wei\'>w</span>';
-			if (isset($month[$day][2])) $month[$day][2] .= $content;
-			else $month[$day][2] = $content;
-		}
-		if (date("n", $stamp) > $mon && date("Y", $stamp) >= $year)
-			break;
-	}
-	foreach ($miscs as $misc)
-	{
-		$stamp = $misc['datetime_stamp'];
-		if ((date("n", $stamp) < $mon-1 || date("Y", $stamp) < $year)) 
-			continue;
-		if (date("n", $stamp) == $mon && date("Y", $stamp) == $year) 
-		{	
-			$day = date("j", $stamp);
-			$content = '<span class=\'misc\' title=\''.$misc['comments'].'\'>'.$misc['what'].'</span>';
-			if (isset($month[$day][2])) $month[$day][2] .= $content;
-			else $month[$day][2] = $content;
-		}
-		if (date("n", $stamp) > $mon && date("Y", $stamp) >= $year)
-			break;
-	}
+
 	$extra = array_values($extra_weeks);
 
 	echo generate_calendar($year, $mon, $month, 3, NULL, 1, 15, $extra);
