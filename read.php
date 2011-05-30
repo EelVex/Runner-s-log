@@ -131,11 +131,13 @@ foreach ($extras as $extra_name => $extra_file) {
 			/* Try to guess what's in collumn 3. It "should" be 
 			 * either an activity duration or an activity 
 			 * description */
-			if (preg_match('/[0-9]*:[0-9]*/', $arr[2])) {
-				$duration = $arr[2];
-			} else {
-				$what = $arr[2];
-				if (!$comments) $comments = $arr[3];
+			if (array_key_exists(2, $arr)) {
+				if (preg_match('/[0-9]*:[0-9]*/', $arr[2])) {
+					$duration = $arr[2];
+				} else {
+					$what = $arr[2];
+					if (!$comments) if (array_key_exists(3, $arr)) $comments = $arr[3];
+				}
 			}
 
 			list($day,$month,$year) = explode('.',$tdate);

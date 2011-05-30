@@ -4,6 +4,11 @@
 
 <?php
 
+/* Initialize to remove warnings */
+$data_distance = ''; $data_distance_total = '';
+$dates = ''; $distances = ''; $times = '';
+$paces = ''; $vo2s = '';
+
 foreach($runs as $run) {
 	$cumdist += $run['distance'];
 	$data_distance .= '['.strval(1000*intval($run['datetime_stamp'])).', '.$run['distance'].'],';
