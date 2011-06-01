@@ -3,6 +3,7 @@ include_once('functions.php');
 
 $lap_distance = $CONFIGURE['lap_distance_m']/1000;
 $running_file = $CONFIGURE['log_file'];
+$separator = $CONFIGURE['field_separator'];
 
 $fp = fopen($running_file,'r');
 $dump = fgets($fp); $dump = fgets($fp); //Ignore first too lines
@@ -13,7 +14,7 @@ $prin14meres = mktime (0,0,0, date("m"), date("d")-14, date("Y"));
 while (!feof($fp)) {
 	$tmp = fgets($fp);
 	if ($tmp) {
-		$arr = explode("\t", $tmp);
+		$arr = explode($separator, $tmp);
 		$arr[] = ""; /* UGLY HACK */ // GIa na eimaste sigouroi oti yparxei to $arr[5]
 		$runs[$i]["date_run"] = $arr[0];
 		$runs[$i]["time_run"] = $arr[1];
@@ -115,7 +116,7 @@ foreach ($extras as $extra_name => $extra_file) {
 	while (!feof($fp)) {
 		$tmp = fgets($fp);
 		if ($tmp) {
-			$arr = explode("\t", $tmp);
+			$arr = explode($separator, $tmp);
 
 			$tdate = $arr[0];
 			$duration = '';

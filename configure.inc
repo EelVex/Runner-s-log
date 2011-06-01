@@ -9,6 +9,10 @@ $CONFIGURE = array(
 	/* Monthly distance goal in km */
 	'goal' => 108,
 
+	/* What separates the fields in a log file. Use comma (,) for csv 
+	 * format */
+	'field_separator' => "\t",
+
 	/* A lap's length in meters; 
 	 * use '1' if you log running distance in meters
 	 * use '1000' if you log in km
