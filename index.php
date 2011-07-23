@@ -10,7 +10,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		<meta name='Keywords' content='running, log, stats' />
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-7" />
 		<link rel='stylesheet' title='Basic style' type='text/css' href='index.css' /> 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js" type="text/javascript"></script>
+		<script type='text/javascript' src='flot/jquery.js'></script>
 	</head>
 <body>
 	<div id='options'>
