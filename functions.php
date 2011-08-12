@@ -79,6 +79,8 @@ function style_type($type,$back='background-')
 	case "L":
 		$flag_style = "style='text-align: center; ${back}color: #cfc'";
 		break;
+	case "H":
+	case "T":
 	case "I":
 		$flag_style = "style='text-align: center; ${back}color: #faa'";
 		break;

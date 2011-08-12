@@ -60,5 +60,5 @@ foreach ($periods as $period) {
 ?>
 
 <div>
-S = short run, M = medium run, L = long run, I = interval, R = race
+S = short run, M = medium run, L = long run, I = interval, T = Tempo, H = HighIntensity, R = race
 </div>
