@@ -125,7 +125,7 @@ foreach ($extras as $extra_name => $extra_file) {
 			/* Try to guess what's in collumn 1. It "should" be 
 			 * either activity's starting time or activity's
 			 * comments/details */
-			if (time_format($arr[1]) == '00:00:00') {
+			if (strtotime($arr[1]) === false) {
 				$comments = $arr[1];
 			}
 
