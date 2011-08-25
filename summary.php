@@ -81,9 +81,9 @@ foreach ($record_categories as $cat) {
 ?>
 	</table></div>
 
-<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Αγώνες</th></tr><tr><th>Αγώνας</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
-<?php
+<?php 
 if (isset($races) && sizeof($races) > 0) {
+	echo "<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Αγώνες</th></tr><tr><th>Αγώνας</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>";
 	foreach ($races as $race) {
 		echo " <tr><td style='text-align: left;'><b>".$race['comments']."</b></td>
 			<td>".strftime("%a %d-%b-%Y",$race["datetime_stamp"])."</td>
@@ -93,7 +93,6 @@ if (isset($races) && sizeof($races) > 0) {
 			<td>".sprintf("%4.2f", $race['vo'])."</td>
 			</tr>";
 	}
+	echo "</table></div>";
 }
 ?>
-	</table></div>
-
