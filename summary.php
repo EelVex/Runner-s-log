@@ -66,14 +66,17 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 <div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Ρεκόρ</th></tr><tr><th>Κατηγορία</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Projected<br />χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
 <?php
 foreach ($record_categories as $cat) {
-	echo " <tr><td style='text-align: left;'><b>$cat Km</b></td>
-		<td>".strftime("%a %d-%b-%Y",$record_for_category[$cat]["datetime_stamp"])."</td>
-		<td>".sprintf("%02.0f:%02.0f:%02.0f",$record_for_category[$cat]['time_hours'],$record_for_category[$cat]['time_mins'],$record_for_category[$cat]['time_secs'])."</td>
-		<td>".sprintf("%02.0f:%02.0f:%02.0f",floor($cat*$record_for_category[$cat]['pace']/60),floor($cat*$record_for_category[$cat]['pace']%60),(60*$cat*$record_for_category[$cat]['pace'])%60)."</td>
-		<td>".sprintf("%4.2f",$record_for_category[$cat]['distance'])."km</td>
-		<td>".pace_format($record_for_category[$cat]['pace'])."</td>
-		<td>".sprintf("%4.2f", $record_for_category[$cat]['vo'])."</td>
-		</tr>";
+	$cat = strval($cat);
+	if (array_key_exists($cat, $record_for_category)) {
+		echo " <tr><td style='text-align: left;'><b>$cat Km</b></td>
+			<td>".strftime("%a %d-%b-%Y",$record_for_category[$cat]["datetime_stamp"])."</td>
+			<td>".sprintf("%02.0f:%02.0f:%02.0f",$record_for_category[$cat]['time_hours'],$record_for_category[$cat]['time_mins'],$record_for_category[$cat]['time_secs'])."</td>
+			<td>".sprintf("%02.0f:%02.0f:%02.0f",floor($cat*$record_for_category[$cat]['pace']/60),floor($cat*$record_for_category[$cat]['pace']%60),(60*$cat*$record_for_category[$cat]['pace'])%60)."</td>
+			<td>".sprintf("%4.2f",$record_for_category[$cat]['distance'])."km</td>
+			<td>".pace_format($record_for_category[$cat]['pace'])."</td>
+			<td>".sprintf("%4.2f", $record_for_category[$cat]['vo'])."</td>
+			</tr>";
+	}
 }
 ?>
 	</table></div>

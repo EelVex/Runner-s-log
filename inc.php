@@ -26,8 +26,8 @@ foreach($runs as $run) {
 	//Find records for each category
 	foreach ($record_categories as $cat) {
 		if (1.10*$cat > $run['distance'] && 0.90*$cat < $run['distance']) {
-			if ( !isset($record_for_category[$cat]) ||  $run['pace'] < $record_for_category[$cat]['pace'] ) {
-				$record_for_category[$cat] = $run;
+			if ( !isset($record_for_category["$cat"]) ||  $run['pace'] < $record_for_category["$cat"]['pace'] ) {
+				$record_for_category["$cat"] = $run;
 			}
 		}
 	}
