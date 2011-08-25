@@ -83,14 +83,16 @@ foreach ($record_categories as $cat) {
 
 <div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Αγώνες</th></tr><tr><th>Αγώνας</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
 <?php
-foreach ($races as $race) {
-	echo " <tr><td style='text-align: left;'><b>".$race['comments']."</b></td>
-		<td>".strftime("%a %d-%b-%Y",$race["datetime_stamp"])."</td>
-		<td>".sprintf("%02.0f:%02.0f:%02.0f",$race['time_hours'],$race['time_mins'],$race['time_secs'])."</td>
-		<td>".sprintf("%4.2f",$race['distance'])."km</td>
-		<td>".pace_format($race['pace'])."</td>
-		<td>".sprintf("%4.2f", $race['vo'])."</td>
-		</tr>";
+if (isset($races) && sizeof($races) > 0) {
+	foreach ($races as $race) {
+		echo " <tr><td style='text-align: left;'><b>".$race['comments']."</b></td>
+			<td>".strftime("%a %d-%b-%Y",$race["datetime_stamp"])."</td>
+			<td>".sprintf("%02.0f:%02.0f:%02.0f",$race['time_hours'],$race['time_mins'],$race['time_secs'])."</td>
+			<td>".sprintf("%4.2f",$race['distance'])."km</td>
+			<td>".pace_format($race['pace'])."</td>
+			<td>".sprintf("%4.2f", $race['vo'])."</td>
+			</tr>";
+	}
 }
 ?>
 	</table></div>
