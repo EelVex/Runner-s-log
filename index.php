@@ -11,6 +11,25 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel='stylesheet' title='Basic style' type='text/css' href='index.css' /> 
 		<script type='text/javascript' src='flot/jquery.js'></script>
+		<script type="text/javascript" src="flot/jquery.form.js"></script> 
+
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+		<script>
+		$(document).ready(function() {
+				$("#mera").datepicker();
+				$("#mera").datepicker( "option", "dateFormat", "dd.mm.yy" );
+				$('#mera').datepicker("setDate","0");
+				$('#newsess').ajaxForm({ 
+					datatype: 'json',
+					success: readMSG
+				}); 
+			});
+		function readMSG(data) { 
+			alert(data); 
+		}
+		</script>
 	</head>
 <body>
 	<div id='options'>

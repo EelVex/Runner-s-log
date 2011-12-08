@@ -77,7 +77,7 @@ tr {
 	margin: 0;
 	padding: 0;
 }
-th {
+.table th, .calendar th {
 	margin: 0;
 	padding: 0;
 	background-color: #c95;
@@ -258,4 +258,41 @@ div.result h5 {
 #summary span {
 	color: #339;
 	font-weight: bold;
+}
+form#newsess {
+	font-size: 0.7em;
+	margin: 1em 0.5em;
+}
+#newsess fieldset {
+	border: solid #ccc 1px;
+	background: #eee;
+}
+#newsess input {
+	border: solid #333 1px;
+	background: #cce;
+}
+#newsess input:hover {
+	background: #fff;
+}
+input.small_no {
+	width: 20px;
+	text-align: right;
+	font-size: 1.0em;
+	padding: 1px 3px;
+}
+#newsess input.disabled, #newsess input.disabled:hover {
+	background: #ccc;
+	color: #777;
+	cursor: default;
+}
+#newsess table, #newsess table td {
+	text-align: center;
+	border: 0;
+	padding-right: 2em;
+}
+#newsess input.button, #newsess input.button:hover {
+	font-size: 0.8em;
+}
+#mera, #newsess select {
+	font-size: 1.0em;
 }

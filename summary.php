@@ -8,6 +8,40 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 <div style='float: left; border: black solid 1px; border-left: #ccc dotted 1px; height: 15px; width: ".(500-round($percent*5))."px; font-family: monospace'>${percent}%</div>
 </div>";
 ?>
+<form id='newsess' action='new_session.php' method='post'>
+<fieldset>
+	<legend>καταχώρηση προπόνησης</legend>
+	<table>
+	<tr>
+		<td><label for='diarkeia_h' title='hh:mm:ss'>Διάρκεια</label></td>
+		<td><label for='wra_h' title='HH:mm' >Ώρα</label></td>
+		<td><label for='mera'>Μέρα</label></td>
+		<td><label for='laps' title='<?php echo '1 γύρος = '.$CONFIGURE['lap_distance_m'].'m'; ?>'>Γύροι </label></td>
+		<td><label for='flag'>Τύπος</label></td>
+		<td><label for='comments'>Σημειώσεις</label></td>
+		<td><label for='log_file'>Ημερολόγιο</label></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td><input type='text' id='diarkeia_h' name='diarkeia_h' value='0' class='small_no' />:<input type='text' id='diarkeia_m' name='diarkeia_m' value='30' class='small_no' />:<input type='text' id='diarkeia_s' name='diarkeia_s' value='00' class='small_no' /></td>
+		<td><input type='text' id='wra_h' name='wra_h' value='20' class='small_no' />:<input type='text' id='wra_m' name='wra_m' value='00' class='small_no' /></td>
+		<td><input id='mera' name='mera' style='width: 7em;' /></td>
+		<td><input id='laps' name='laps' class='small_no' value='10' /></td>
+		<td><select name='flag' id='flag'>
+			<option value='N'>Απλό τρέξιμο</option>
+			<option value='R'>Αγώνας</option>
+			<option value='I'>Διαλλειματική προπόνηση</option>
+			<option value='L'>Long run</option>
+			<option value='T'>Tempo</option>
+			<option value='H'>HIIT</option>
+			</select></td>
+		<td><input name='comments' id='comments' /></td>
+		<td><input class='disabled' disabled name='log_file' id='log_file' value='<?php echo $CONFIGURE['log_file'];?>' /></td>
+		<td><input class='button' type='submit' value='Αποθήκευση' />
+	</tr>
+	</table>
+</fieldset>
+</form>
 <div class='table'>
 	<table>
 		<tr><th>&nbsp;</th><th>Km</th><th>μ.ο. Km/<br/>προπόνηση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
