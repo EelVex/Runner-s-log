@@ -265,11 +265,11 @@ form#newsess {
 }
 #newsess fieldset {
 	border: solid #ccc 1px;
-	background: #eee;
+	background: #fafaeb;
 }
 #newsess input {
 	border: solid #333 1px;
-	background: #cce;
+	background: #f7e9cd;
 }
 #newsess input:hover {
 	background: #fff;
@@ -281,7 +281,7 @@ input.small_no {
 	padding: 1px 3px;
 }
 #newsess input.disabled, #newsess input.disabled:hover {
-	background: #ccc;
+	background: #cec7be;
 	color: #777;
 	cursor: default;
 }
@@ -293,8 +293,9 @@ input.small_no {
 	min-width: 100px;
 }
 #newsess input.button, #newsess input.button:hover {
-	background: #cce;
+	background: #e0d4ba;
 	font-size: 0.8em;
+	font-family: sans-serif;
 }
 #mera, #newsess select {
 	font-size: 1.0em;
