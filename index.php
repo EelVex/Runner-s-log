@@ -22,12 +22,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				$("#mera").datepicker( "option", "dateFormat", "dd.mm.yy" );
 				$('#mera').datepicker("setDate","0");
 				$('#newsess').ajaxForm({ 
-					datatype: 'json',
+					dataType: 'json',
 					success: readMSG
 				}); 
 			});
 		function readMSG(data) { 
-			alert(data); 
+			alert(data.message); 
 		}
 		</script>
 	</head>
