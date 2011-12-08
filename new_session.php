@@ -16,9 +16,9 @@ if($_POST) {
 	if (is_writable($file)) {
 		$fp = fopen($file,'a');
 		fwrite($fp, $str);
-		echo json_encode(array('message' => 'Αποθηκεύτηκε!'));
+		echo json_encode(array('message' => 'Αποθηκεύτηκε!', 'success' => 1));
 	} else {
-		echo json_encode(array('message' => "No permission to write to $file"));
+		echo json_encode(array('message' => "No permission to write to $file", 'success' => 0));
 	}
 }
 

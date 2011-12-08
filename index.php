@@ -18,6 +18,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 		<script>
 		$(document).ready(function() {
+				$('#add_session').click(function() {
+					$('#add_session').hide();
+					$('#newsess').show();
+				});
+				$('#newsess_cancel').click(function() {
+					$('#add_session').show();
+					$('#newsess').hide();
+				});
 				$("#mera").datepicker();
 				$("#mera").datepicker( "option", "dateFormat", "dd.mm.yy" );
 				$('#mera').datepicker("setDate","0");
@@ -28,6 +36,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			});
 		function readMSG(data) { 
 			alert(data.message); 
+			if (data.success == 1) {
+				window.location.reload();
+			} else {
+				$('#newsess').hide();
+				$('#add_session').show();
+			}
 		}
 		</script>
 	</head>

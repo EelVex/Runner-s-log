@@ -8,6 +8,7 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 <div style='float: left; border: black solid 1px; border-left: #ccc dotted 1px; height: 15px; width: ".(500-round($percent*5))."px; font-family: monospace'>${percent}%</div>
 </div>";
 ?>
+<div id='add_session'>Καταχώρηση προπόνησης</div>
 <form id='newsess' action='new_session.php' method='post'>
 <fieldset>
 	<legend>καταχώρηση προπόνησης</legend>
@@ -37,7 +38,7 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 			</select></td>
 		<td><input name='comments' id='comments' /></td>
 		<td><input class='disabled' disabled name='log_file' id='log_file' value='<?php echo $CONFIGURE['log_file'];?>' /></td>
-		<td><input class='button' type='submit' value='Αποθήκευση' />
+		<td><input class='button' type='submit' value='Αποθήκευση' /><br/><input class='button' id='newsess_cancel' type='button' value='Ακύρωση' /></td>
 	</tr>
 	</table>
 </fieldset>

@@ -288,11 +288,32 @@ input.small_no {
 #newsess table, #newsess table td {
 	text-align: center;
 	border: 0;
-	padding-right: 2em;
+}
+#newsess table td {
+	min-width: 100px;
 }
 #newsess input.button, #newsess input.button:hover {
+	background: #cce;
 	font-size: 0.8em;
 }
 #mera, #newsess select {
 	font-size: 1.0em;
+}
+#newsess {
+	display: none;
+}
+#add_session {
+	display: block;
+	width: 250px;
+	font-size: 0.8em;
+	margin: 0.5em 2em;
+	cursor: pointer;
+	padding-left: 17px;
+	background-image: url('img/add0.png');
+	background-repeat: no-repeat;
+	color: #ccc;
+}
+#add_session:hover {
+	color: #000;
+	background-image: url('img/add.png');
 }
