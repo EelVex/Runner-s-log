@@ -10,26 +10,26 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 ?>
 <div class='table'>
 	<table>
-		<tr><th>&nbsp;</th><th>Km</th><th>μ.ο. Km/<br/>προπόνηση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
-		<tr><td>Τελευταία</td>
+		<tr><th>&nbsp;</th><th>Km</th><th>ΞΌ.ΞΏ. Km/<br/>Ο€ΟΞΏΟ€ΟΞ½Ξ·ΟƒΞ·</th><th>Ξ΅Ο…ΞΈΞΌΟΟ‚</th><th>VO<sub>2</sub></th></tr>
+		<tr><td>Ξ¤ΞµΞ»ΞµΟ…Ο„Ξ±Ξ―Ξ±</td>
 			<td><?php echo sprintf("%4.2f",$runs[sizeof($runs)-1]['distance']); ?></td>
 			<td> -&nbsp;&nbsp; </td>
 			<td><?php echo pace_format($runs[sizeof($runs)-1]['minutes_per_km']); ?></td>
 			<td><?php echo sprintf("%4.2f",$runs[sizeof($runs)-1]['vo']); ?></td>
 			</tr>
-		<tr><td>Προηγούμενη</td>
+		<tr><td>Ξ ΟΞΏΞ·Ξ³ΞΏΟΞΌΞµΞ½Ξ·</td>
 			<td><?php echo sprintf("%4.2f",$runs[sizeof($runs)-2]['distance']); ?></td>
 			<td> -&nbsp;&nbsp; </td>
 			<td><?php echo pace_format($runs[sizeof($runs)-2]['minutes_per_km']); ?></td>
 			<td><?php echo sprintf("%4.2f",$runs[sizeof($runs)-2]['vo']); ?></td>
 			</tr>
-		<tr><td>14 μέρες</td>
+		<tr><td>14 ΞΌΞ­ΟΞµΟ‚</td>
 			<td><?php echo "$mean_total_km_14"; ?></td>
 			<td><?php echo "$mean_km_14"; ?></td>
 			<td><?php echo pace_format($mean_pace_14); ?></td>
 			<td><?php echo "$mean_vo_14"; ?></td>
 			</tr>
-		<tr><td>Σύνολο</td>
+		<tr><td>Ξ£ΟΞ½ΞΏΞ»ΞΏ</td>
 			<td><?php echo sprintf("%4.2f",$total_run); ?></td>
 			<td><?php echo "$mean_km"; ?></td>
 			<td><?php echo pace_format($mean_pace); ?></td>
@@ -45,25 +45,25 @@ $ruler = "<div style='display: block; border: solid black 0px; width: 600px; hei
 	<p class='plain'>
 		Bonus: <?php echo $record_km.$record_pc.$record_vo; ?> </p>
 	<p class='plain'>
-		Σε σύγκριση με μια μέση προπόνηση η <b>τελευτάια</b> ήταν
-		 <?php echo "<b>".(($runs[sizeof($runs)-1]['distance']>$mean_km)?"περισσότερα":"λιγότερα")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['distance']>$mean_km)?"up":"down").".gif' alt='updown' />"; ?> χιλιόμετρα, 
-		πιο <?php echo "<b>".(($runs[sizeof($runs)-1]['minutes_per_km']<$mean_pace)?"γρήγορα":"αργά")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['minutes_per_km']<$mean_pace)?"up":"down").".gif' alt='updown' />"; ?> και με 
-		<?php echo '<b>'.(($runs[sizeof($runs)-1]['vo']>$mean_vo)?"υψηλότερο":"χαμηλότερο")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['vo']>$mean_vo)?"up":"down").".gif' alt='updown' />"; ?> VO<sub>2</sub>.
+		Ξ£Ξµ ΟƒΟΞ³ΞΊΟΞΉΟƒΞ· ΞΌΞµ ΞΌΞΉΞ± ΞΌΞ­ΟƒΞ· Ο€ΟΞΏΟ€ΟΞ½Ξ·ΟƒΞ· Ξ· <b>Ο„ΞµΞ»ΞµΟ…Ο„Ξ¬ΞΉΞ±</b> Ξ®Ο„Ξ±Ξ½
+		 <?php echo "<b>".(($runs[sizeof($runs)-1]['distance']>$mean_km)?"Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ±":"Ξ»ΞΉΞ³ΟΟ„ΞµΟΞ±")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['distance']>$mean_km)?"up":"down").".gif' alt='updown' />"; ?> Ο‡ΞΉΞ»ΞΉΟΞΌΞµΟ„ΟΞ±, 
+		Ο€ΞΉΞΏ <?php echo "<b>".(($runs[sizeof($runs)-1]['minutes_per_km']<$mean_pace)?"Ξ³ΟΞ®Ξ³ΞΏΟΞ±":"Ξ±ΟΞ³Ξ¬")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['minutes_per_km']<$mean_pace)?"up":"down").".gif' alt='updown' />"; ?> ΞΊΞ±ΞΉ ΞΌΞµ 
+		<?php echo '<b>'.(($runs[sizeof($runs)-1]['vo']>$mean_vo)?"Ο…ΟΞ·Ξ»ΟΟ„ΞµΟΞΏ":"Ο‡Ξ±ΞΌΞ·Ξ»ΟΟ„ΞµΟΞΏ")."</b><img src='img/arrow_".(($runs[sizeof($runs)-1]['vo']>$mean_vo)?"up":"down").".gif' alt='updown' />"; ?> VO<sub>2</sub>.
 	</p>
 	<p class='plain'>
-		Σε σύγκριση με μια μέση προπόνηση ο <b>μέσος όρος 14ων ημερών</b> ήταν
-		<?php echo '<b>'.((1*$mean_km_14>1*$mean_km)?"περισσότερα":"λιγότερα")."</b><img src='img/arrow_".((1*$mean_km_14>1*$mean_km)?"up":"down").".gif' alt='updown' />"; ?> χιλιόμετρα, 
-		πιο <?php echo '<b>'.(($mean_pace_14<$mean_pace)?"γρήγορα":"αργά")."</b><img src='img/arrow_".(($mean_pace_14<$mean_pace)?"up":"down").".gif' alt='updown' />"; ?> και με  
-		<?php echo '<b>'.(($mean_vo_14>$mean_vo)?"υψηλότερο":"χαμηλότερο")."</b><img src='img/arrow_".(($mean_vo_14>$mean_vo)?"up":"down").".gif' alt='updown' />"; ?> VO<sub>2</sub>.
+		Ξ£Ξµ ΟƒΟΞ³ΞΊΟΞΉΟƒΞ· ΞΌΞµ ΞΌΞΉΞ± ΞΌΞ­ΟƒΞ· Ο€ΟΞΏΟ€ΟΞ½Ξ·ΟƒΞ· ΞΏ <b>ΞΌΞ­ΟƒΞΏΟ‚ ΟΟΞΏΟ‚ 14Ο‰Ξ½ Ξ·ΞΌΞµΟΟΞ½</b> Ξ®Ο„Ξ±Ξ½
+		<?php echo '<b>'.((1*$mean_km_14>1*$mean_km)?"Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ±":"Ξ»ΞΉΞ³ΟΟ„ΞµΟΞ±")."</b><img src='img/arrow_".((1*$mean_km_14>1*$mean_km)?"up":"down").".gif' alt='updown' />"; ?> Ο‡ΞΉΞ»ΞΉΟΞΌΞµΟ„ΟΞ±, 
+		Ο€ΞΉΞΏ <?php echo '<b>'.(($mean_pace_14<$mean_pace)?"Ξ³ΟΞ®Ξ³ΞΏΟΞ±":"Ξ±ΟΞ³Ξ¬")."</b><img src='img/arrow_".(($mean_pace_14<$mean_pace)?"up":"down").".gif' alt='updown' />"; ?> ΞΊΞ±ΞΉ ΞΌΞµ  
+		<?php echo '<b>'.(($mean_vo_14>$mean_vo)?"Ο…ΟΞ·Ξ»ΟΟ„ΞµΟΞΏ":"Ο‡Ξ±ΞΌΞ·Ξ»ΟΟ„ΞµΟΞΏ")."</b><img src='img/arrow_".(($mean_vo_14>$mean_vo)?"up":"down").".gif' alt='updown' />"; ?> VO<sub>2</sub>.
 		</p>
 	<p class='plain'>
-	Οι τελευταίες 14 μέρες είχαν <?php echo '<b>'.(($mean_total_km_14>14*$mean_total_km)?"περισσότερα":"λιγότερα")."</b><img src='img/arrow_".(($mean_total_km_14>14*$mean_total_km)?"up":"down").".gif' alt='updown' />"; ?> χιλιόμετρα από μια μέση περίοδο 14ων ημερών <?php echo "(".sprintf("%4.2f",14*$mean_total_km)."km)"; ?><br />
+	ΞΞΉ Ο„ΞµΞ»ΞµΟ…Ο„Ξ±Ξ―ΞµΟ‚ 14 ΞΌΞ­ΟΞµΟ‚ ΞµΞ―Ο‡Ξ±Ξ½ <?php echo '<b>'.(($mean_total_km_14>14*$mean_total_km)?"Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞ±":"Ξ»ΞΉΞ³ΟΟ„ΞµΟΞ±")."</b><img src='img/arrow_".(($mean_total_km_14>14*$mean_total_km)?"up":"down").".gif' alt='updown' />"; ?> Ο‡ΞΉΞ»ΞΉΟΞΌΞµΟ„ΟΞ± Ξ±Ο€Ο ΞΌΞΉΞ± ΞΌΞ­ΟƒΞ· Ο€ΞµΟΞ―ΞΏΞ΄ΞΏ 14Ο‰Ξ½ Ξ·ΞΌΞµΟΟΞ½ <?php echo "(".sprintf("%4.2f",14*$mean_total_km)."km)"; ?><br />
 	</p>
 
 </div>
 
 
-<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Ρεκόρ</th></tr><tr><th>Κατηγορία</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Projected<br />χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>
+<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Ξ΅ΞµΞΊΟΟ</th></tr><tr><th>ΞΞ±Ο„Ξ·Ξ³ΞΏΟΞ―Ξ±</th><th>Ξ—ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±</th><th>Ξ§ΟΟΞ½ΞΏΟ‚</th><th>Projected<br />Ο‡ΟΟΞ½ΞΏΟ‚</th><th>Ξ‘Ο€ΟΟƒΟ„Ξ±ΟƒΞ·</th><th>Ξ΅Ο…ΞΈΞΌΟΟ‚</th><th>VO<sub>2</sub></th></tr>
 <?php
 foreach ($record_categories as $cat) {
 	$cat = strval($cat);
@@ -83,7 +83,7 @@ foreach ($record_categories as $cat) {
 
 <?php 
 if (isset($races) && sizeof($races) > 0) {
-	echo "<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Αγώνες</th></tr><tr><th>Αγώνας</th><th>Ημερομηνία</th><th>Χρόνος</th><th>Απόσταση</th><th>Ρυθμός</th><th>VO<sub>2</sub></th></tr>";
+	echo "<div class='table'><table><tr><th colspan='7' style='border-bottom: solid black 1px'>Ξ‘Ξ³ΟΞ½ΞµΟ‚</th></tr><tr><th>Ξ‘Ξ³ΟΞ½Ξ±Ο‚</th><th>Ξ—ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±</th><th>Ξ§ΟΟΞ½ΞΏΟ‚</th><th>Ξ‘Ο€ΟΟƒΟ„Ξ±ΟƒΞ·</th><th>Ξ΅Ο…ΞΈΞΌΟΟ‚</th><th>VO<sub>2</sub></th></tr>";
 	foreach ($races as $race) {
 		echo " <tr><td style='text-align: left;'><b>".$race['comments']."</b></td>
 			<td>".strftime("%a %d-%b-%Y",$race["datetime_stamp"])."</td>

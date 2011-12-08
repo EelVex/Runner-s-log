@@ -8,18 +8,18 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		<meta name='Description' content='Statistics from your running logs' />
 		<meta name='author' content='EelVex' />
 		<meta name='Keywords' content='running, log, stats' />
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-7" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel='stylesheet' title='Basic style' type='text/css' href='index.css' /> 
 		<script type='text/javascript' src='flot/jquery.js'></script>
 	</head>
 <body>
 	<div id='options'>
 		<ul>
-			<li><a href='index.php?show=sum' <?php echo $show['sum']; ?>>Περίληψη</a></li>
-			<li><a href='index.php?show=cal' <?php echo $show['cal']; ?>>Ημερολόγιο</a></li>
-			<li><a href='index.php?show=period' <?php echo $show['period']; ?>>Περίοδοι</a></li>
-			<li><a href='index.php?show=stats' <?php echo $show['stats']; ?>>Διαγράμματα</a></li>
-			<li><a href='index.php?show=guide' <?php echo $show['guide']; ?>>Οδηγός</a></li>
+			<li><a href='index.php?show=sum' <?php echo $show['sum']; ?>>Ξ Ξ΅ΟΞ―Ξ»Ξ·ΟΞ·</a></li>
+			<li><a href='index.php?show=cal' <?php echo $show['cal']; ?>>ΞΞΌΞ΅ΟΞΏΞ»ΟΞ³ΞΉΞΏ</a></li>
+			<li><a href='index.php?show=period' <?php echo $show['period']; ?>>Ξ Ξ΅ΟΞ―ΞΏΞ΄ΞΏΞΉ</a></li>
+			<li><a href='index.php?show=stats' <?php echo $show['stats']; ?>>ΞΞΉΞ±Ξ³ΟΞ¬ΞΌΞΌΞ±ΟΞ±</a></li>
+			<li><a href='index.php?show=guide' <?php echo $show['guide']; ?>>ΞΞ΄Ξ·Ξ³ΟΟ</a></li>
 			<li><a href='index.php?show=logs' <?php echo $show['logs']; ?>>Logs</a></li>
 		</ul>
 	 </div>

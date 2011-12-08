@@ -1,5 +1,5 @@
 <?php
-echo "<div class='table'><table><tr><th>Ημ/νια</th><th>Απόσταση<br />(km)</th><th>Χρόνος<br />(h:m:s)</th><th>Μ.Ο<br />(min/km)</th><th>&nbsp;</th><th>VO</th></tr>";
+echo "<div class='table'><table><tr><th>Ξ—ΞΌ/Ξ½ΞΉΞ±</th><th>Ξ‘Ο€ΟΟƒΟ„Ξ±ΟƒΞ·<br />(km)</th><th>Ξ§ΟΟΞ½ΞΏΟ‚<br />(h:m:s)</th><th>Ξ.Ξ<br />(min/km)</th><th>&nbsp;</th><th>VO</th></tr>";
 for ($i=sizeof($runs)-1;$i>=0;$i--) {
 	$style = "";  $img_pc = ''; $img_km = ''; $img_vo = '';
 	$flag = $runs[$i]["type_of_run"];
@@ -31,7 +31,7 @@ for ($i=sizeof($runs)-1;$i>=0;$i--) {
 	);
 }
 echo "</table></div>";
-echo "<div class='table'><table><tr><th>Μήνας</th><th>km</th><th>runs</th><th>km/run</th></tr>";
+echo "<div class='table'><table><tr><th>ΞΞ®Ξ½Ξ±Ο‚</th><th>km</th><th>runs</th><th>km/run</th></tr>";
 foreach($monthly_km as $this_m=>$this_km)  echo "<tr><td>$this_m</td><td>".number_format($this_km,2,',','.')."</td><td>".$monthly_f[$this_m]."</td><td>".number_format($this_km/$monthly_f[$this_m],2,',','.')."</td></tr>"; 
 echo "</table></div>";
 

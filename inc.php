@@ -10,7 +10,7 @@ $show = array('sum'=>'',
 );
 if (isset($_GET['show']))  	$show[$_GET['show']] = " class='current' ";
 else  			$show['sum'] = " class='current' "; 
-setlocale(LC_TIME,'el_GR.ISO8859-7');
+setlocale(LC_TIME,'el_GR.UTF-8');
 include_once('functions.php');
 include_once("read.php");
 

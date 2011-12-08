@@ -46,7 +46,7 @@ $vo2s = substr($vo2s, 0, strlen($vo2s)-1);
 		var vo2s = new Array(<?php echo $vo2s; ?>);
 
 		var options = {
-			xaxis: { mode: 'time', ticks: 8, timeformat: "%b/%y", monthNames: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαϊ', 'Ιον', 'Ιολ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ']   },
+			xaxis: { mode: 'time', ticks: 8, timeformat: "%b/%y", monthNames: ['Ξ™Ξ±Ξ½', 'Ξ¦ΞµΞ²', 'ΞΞ±Ο', 'Ξ‘Ο€Ο', 'ΞΞ±Ο', 'Ξ™ΞΏΞ½', 'Ξ™ΞΏΞ»', 'Ξ‘Ο…Ξ³', 'Ξ£ΞµΟ€', 'ΞΞΊΟ„', 'ΞΞΏΞµ', 'Ξ”ΞµΞΊ']   },
 			lines: { show: true, fill: true },
 			points: { show: true },
 			yaxis: {  },
@@ -63,16 +63,16 @@ $vo2s = substr($vo2s, 0, strlen($vo2s)-1);
 			points: { show: false}, 
 			bars: {show: true, align: 'center'}
 		},
-		{data: ddistance_total, label: "Συνολικά km"},
+		{data: ddistance_total, label: "Ξ£Ο…Ξ½ΞΏΞ»ΞΉΞΊΞ¬ km"},
 		], 
 		options);
 		$('#graph').bind('plothover', function(event, pos, item) {
 			if (item) {
-				$('#summary').html("<div>Ημερομηνία: <span>"+dates[item.dataIndex]+"</span></div> \
-					<div>Απόσταση: <span>"+distances[item.dataIndex]+"</span> km</div> \
-					<div>Χρόνος: <span>"+times[item.dataIndex]+"</span> h:m:s</div> \
-					<div>Ρυθμός: <span>"+paces[item.dataIndex]+"</span> min/km</div> \
-					<div>Ένταση: <span>"+vo2s[item.dataIndex]+"</span> VO<sub>2</sub></div>"
+				$('#summary').html("<div>Ξ—ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±: <span>"+dates[item.dataIndex]+"</span></div> \
+					<div>Ξ‘Ο€ΟΟƒΟ„Ξ±ΟƒΞ·: <span>"+distances[item.dataIndex]+"</span> km</div> \
+					<div>Ξ§ΟΟΞ½ΞΏΟ‚: <span>"+times[item.dataIndex]+"</span> h:m:s</div> \
+					<div>Ξ΅Ο…ΞΈΞΌΟΟ‚: <span>"+paces[item.dataIndex]+"</span> min/km</div> \
+					<div>ΞΞ½Ο„Ξ±ΟƒΞ·: <span>"+vo2s[item.dataIndex]+"</span> VO<sub>2</sub></div>"
 				);
 			}
 		});

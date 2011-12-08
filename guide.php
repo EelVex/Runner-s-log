@@ -44,7 +44,7 @@
 
 <div class='table'>
 	<table>
-		<tr><th>Ñõèìüò</th><th>100m</th><th>1l<br />(400m)</th><th>1L<br/>(450m)</th><th>800m</th><th>7L</th><th>5km</th><th>10L</th><th>16L</th><th>10km</th><th>21.1km</th><th>42.2km</th></tr>
+		<tr><th>Î¡Ï…Î¸Î¼ÏŒÏ‚</th><th>100m</th><th>1l<br />(400m)</th><th>1L<br/>(450m)</th><th>800m</th><th>7L</th><th>5km</th><th>10L</th><th>16L</th><th>10km</th><th>21.1km</th><th>42.2km</th></tr>
 		<?php
 			$pace = 2+15/60;
 			$distances = array(.1,.4,.45,.8,7*.45,5,10*.45,16*.45,10,21.1,42.2);

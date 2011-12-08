@@ -1,4 +1,4 @@
-Περίοδοι: <?php echo $num_periods; ?>
+Ξ ΞµΟΞ―ΞΏΞ΄ΞΏΞΉ: <?php echo $num_periods; ?>
 <?php
 $i = 0;
 foreach ($periods as $period) {
@@ -14,10 +14,10 @@ foreach ($periods as $period) {
 
 	echo "<div class='period'>";
 	$i++;
-	echo "<h3>".stamp_format($period[0]['datetime_stamp']).' εως '.stamp_format($period[sizeof($period)-1]['datetime_stamp'])."</h3>";
+	echo "<h3>".stamp_format($period[0]['datetime_stamp']).' ΞµΟ‰Ο‚ '.stamp_format($period[sizeof($period)-1]['datetime_stamp'])."</h3>";
 	if (isset($last_race)) {
-		echo "<h4>Στόχος: ".$last_race['comments'].' ('.stamp_format($last_race['datetime_stamp']).") </h4>";
-		printf("<div class='result'><h5>Αποτελεσμα:</h5><span>%01.0f:%02.0f:%02.0fh | %smin/km | %3.1fvo</span></div>",
+		echo "<h4>Ξ£Ο„ΟΟ‡ΞΏΟ‚: ".$last_race['comments'].' ('.stamp_format($last_race['datetime_stamp']).") </h4>";
+		printf("<div class='result'><h5>Ξ‘Ο€ΞΏΟ„ΞµΞ»ΞµΟƒΞΌΞ±:</h5><span>%01.0f:%02.0f:%02.0fh | %smin/km | %3.1fvo</span></div>",
 			$last_race['time_hours'],
 			$last_race['time_mins'],
 			$last_race['time_secs'],
@@ -49,10 +49,10 @@ foreach ($periods as $period) {
 	$mean_pace /= $n;
 	$mean_vo /= $n;
 	echo "</div>";
-	echo "<p class='plain' style='clear: both;'>Στατιστικά συνόλου:<br/> <b>".sprintf("%4.2f",$total_km)."km</b>, $total_days μέρες, ".sizeof($period)." προπονήσεις
-		".sprintf("%4.2f",$total_km/sizeof($period))." km/προπόνηση, <b>".sprintf("%4.2f", 7*$total_km/$total_days)." km/βδομάδα</b>,
-			<b>".sprintf("%1.1f", 7*sizeof($period)/$total_days)." προπονήσεις/βδομάδα</b>
-		</p><p class='plain'>Μεσος ρυθμος: ".pace_format($mean_pace)."  min/km, ".sprintf("%4.2f",$mean_vo)." vo2 </p>";
+	echo "<p class='plain' style='clear: both;'>Ξ£Ο„Ξ±Ο„ΞΉΟƒΟ„ΞΉΞΊΞ¬ ΟƒΟ…Ξ½ΟΞ»ΞΏΟ…:<br/> <b>".sprintf("%4.2f",$total_km)."km</b>, $total_days ΞΌΞ­ΟΞµΟ‚, ".sizeof($period)." Ο€ΟΞΏΟ€ΞΏΞ½Ξ®ΟƒΞµΞΉΟ‚
+		".sprintf("%4.2f",$total_km/sizeof($period))." km/Ο€ΟΞΏΟ€ΟΞ½Ξ·ΟƒΞ·, <b>".sprintf("%4.2f", 7*$total_km/$total_days)." km/Ξ²Ξ΄ΞΏΞΌΞ¬Ξ΄Ξ±</b>,
+			<b>".sprintf("%1.1f", 7*sizeof($period)/$total_days)." Ο€ΟΞΏΟ€ΞΏΞ½Ξ®ΟƒΞµΞΉΟ‚/Ξ²Ξ΄ΞΏΞΌΞ¬Ξ΄Ξ±</b>
+		</p><p class='plain'>ΞΞµΟƒΞΏΟ‚ ΟΟ…ΞΈΞΌΞΏΟ‚: ".pace_format($mean_pace)."  min/km, ".sprintf("%4.2f",$mean_vo)." vo2 </p>";
 
 
 	echo "</div>";

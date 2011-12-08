@@ -59,7 +59,7 @@ function stamp_format($stamp)
 	global $runs;
 
 	if ($stamp == $runs[sizeof($runs)-1]['datetime_stamp'])
-		return "Σήμερα";
+		return "Ξ£Ξ®ΞΌΞµΟΞ±";
 	else 
 		return strftime("%a %d-%b-%Y",$stamp);
 }
