@@ -1,5 +1,6 @@
 <?php
 require_once("configure.inc");
+date_default_timezone_set('Europe/Athens');
 
 $show = array('sum'=>'',
 	'cal'=>'',
