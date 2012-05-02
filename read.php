@@ -84,9 +84,11 @@ $mean_km = sprintf("%4.2f",$total_run/sizeof($runs));
 $mean_total_km = $total_run/$total_diarkeia;
 
 $mean_total_km_14 = sprintf("%4.2f",$mean_km_14);
-$mean_pace_14 = sprintf("%4.2f", $mean_pace_14/$mean_km_14/60);
-$mean_km_14 = sprintf("%4.2f",$mean_km_14/$freq_14);
-$mean_vo_14 = sprintf("%4.2f",$mean_vo_14/$freq_14);
+if ($mean_km_14 > 0) {
+	$mean_pace_14 = sprintf("%4.2f", $mean_pace_14/$mean_km_14/60);
+	$mean_km_14 = sprintf("%4.2f",$mean_km_14/$freq_14);
+	$mean_vo_14 = sprintf("%4.2f",$mean_vo_14/$freq_14);
+}
 
 $record_days_km = 0; $record_days_vo = 0; $record_days_pc = 0;
 
